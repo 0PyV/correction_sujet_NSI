@@ -82,9 +82,12 @@ d’extrusion de l’imprimante.
 ```
 ## Q4
 
-la fonction originale tranformer() remplace les anciens sommets par les nouveaux multipliés par le rapport.
-Le problème est que l'affichage se fait par rapport aux faces (rappel: c'est une liste d'indices de la liste sommets)
-
+Ici, il faut savoir que lorsqu'on crée une face, l'appel cube.ajouter_face([0, 1, 2, 3]) va piocher grâce à une liste d'indices les sommets dans la liste self.sommets
+de cube pour attribuer ces sommets lors de la création de l'objet face
+Ainsi self.faces contiendra des objets faces.
+Cependant, si REMPLACE les sommets de self.sommets du cube, il n'y aura aucune modification sur les sommets (attributs de l'objet face) car ils se réfèrent toujours
+aux ANCIENS sommets qui ne sont donc PLUS présents dans self.sommets du cube
+Autrement dit, il faudrait soit recréer les faces ou bien simplement multiplier les coordonnées des sommets utilisés par les faces
 ```python
 
     def afficher(self): "PAS A MODIFIER"
@@ -105,8 +108,20 @@ Le problème est que l'affichage se fait par rapport aux faces (rappel: c'est un
 
     def transformer_corrigé(self, rapport):
             # On modifie les attributs des objets existants sur place
-            for sommet in self.sommets:
+            for sommet in self.sommets: #self.sommets nous renvoie sur les sommets qui sont présents parmi les attributs des objets faces
                 sommet.x = sommet.x * rapport
                 sommet.y = sommet.y * rapport
                 sommet.z = sommet.z * rapport
+
+    def transformer_erroné(self, rapport):
+        """
+        Applique une transformation d'échelle à l'objet 3D en modifiant directement ses sommets.
+        """
+        sommets = []
+        for sommet in self.sommets:
+            sommets.append(
+                Sommet(sommet.x * rapport,
+                       sommet.y * rapport, sommet.z * rapport))
+        self.sommets = sommets
+
 ```
