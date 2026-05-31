@@ -26,3 +26,5 @@ def decodage_rle(liste_rle):
         i += 2                     # on passe au prochain couple (compte, valeur)
 
     return liste_octets
+
+info pour q4 : faut gérer le fait qu'on peut pas dépasser 255 ce qui est un problème si 256 fois le même pixel (rajout k < 255 dans codage pour limiter les paquets à 255 )

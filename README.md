@@ -1,1 +1,1 @@
-# correction_sujet_NSI
+# correction_sujet_NSI (projet trop ambitieux j'ai juste mis quelques infos sur les trucs compliqués)
