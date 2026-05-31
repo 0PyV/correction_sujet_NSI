@@ -84,10 +84,13 @@ d’extrusion de l’imprimante.
 
 Ici, il faut savoir que lorsqu'on crée une face, l'appel cube.ajouter_face([0, 1, 2, 3]) va piocher grâce à une liste d'indices les sommets dans la liste self.sommets
 de cube pour attribuer ces sommets lors de la création de l'objet face
+
 Ainsi self.faces contiendra des objets faces.
 Cependant, si REMPLACE les sommets de self.sommets du cube, il n'y aura aucune modification sur les sommets (attributs de l'objet face) car ils se réfèrent toujours
 aux ANCIENS sommets qui ne sont donc PLUS présents dans self.sommets du cube
+
 Autrement dit, il faudrait soit recréer les faces ou bien simplement multiplier les coordonnées des sommets utilisés par les faces
+
 ```python
 
     def afficher(self): "PAS A MODIFIER"
