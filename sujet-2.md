@@ -14,4 +14,4 @@ encore une moyenne mais ici faut corriger le code + attention à gérer la divis
 
 ## Q4
 
-faut taper dans la fonction distance et mettre en commentaire la ligne qui rajoute de la distance en fonction du sexe 
+On doit modifier la fonction distance et mettre en commentaire la ligne qui rajoute de la distance en fonction du sexe 
