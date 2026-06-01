@@ -45,8 +45,19 @@ def est_valide(self):
 ```
 ## Q3
 
-encore une moyenne mais ici faut corriger le code + attention à gérer la division par 0 en mettant une condition si 0 homme / 0 femme
+Certaines trames sont incomplètes/ ne respectent pas les 40 bits, on doit alors rajouter une condition de vérification
 
 ## Q4
 
-On doit modifier la fonction distance et mettre en commentaire la ligne qui rajoute de la distance en fonction du sexe 
+Pour régler le problème de taille des trames directement depuis la classe Transmission, il faut que l'on rajoute une condition de vérification
+dans le __init__() ( = le constructeur)
+```python
+    def __init__(self, trame):
+        self._id = None
+        self._temperature = None
+        self._humidite = None
+        self._trame = trame
+
+        if len(trame) == 40: #ICI, au lieu de decoder à chaque fois, on ne le fait que si la trame a la bonne taille
+            self.decoder()
+```
